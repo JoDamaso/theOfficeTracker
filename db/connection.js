@@ -1,6 +1,7 @@
-// connection to my sql
-const mysql = require('mysql2');
-require('dotenv').config();
+const mysql = require('mysql');
+const util = require('util');
+
+// require('dotenv').config();
 
 // Connect to database
 const connection = mysql.createConnection(
@@ -9,13 +10,14 @@ const connection = mysql.createConnection(
     // YOur MySQL username,
     user: process.env.DB_USER,
     // Your MySQL password,
-    password: process.env.DB_PASS, // change all this with .env 
-    database: 'election' // change this 
+    password: process.env.DB_PASS, 
+    database: 'Office Database' 
     },
     console.log('Connected to the Office Tracker database.')
 );
 
-
 connection.connect();
+
 connection.query = util.promisify(connection.query);
+
 module.exports = connection;
