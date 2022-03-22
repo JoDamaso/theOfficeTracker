@@ -9,15 +9,15 @@ class Database {
     };
 
     // TABLE department
-    viewDepartment() {
+    getDepartment() {
         return this.data.query('SELECT * FROM department');
     }
     // TABLE role
-    viewRoles() {
+    getRoles() {
         return this.data.query('SELECT * FROM role');
     }
     // TABLE employee
-    viewEmployees() {
+    getEmployees() {
         return this.data.query('SELECT * FROM employee');
     }
 
@@ -54,4 +54,4 @@ class Database {
     }
 };
 
-module.exports = Database(data);
+module.exports = new Database(data);
