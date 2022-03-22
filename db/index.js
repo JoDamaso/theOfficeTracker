@@ -41,15 +41,15 @@ class Database {
     }
 
     removeRole(role) {
-        return this.data.query('DELETE FROM role WHERE ?', role);
+        return this.data.query('DELETE FROM role WHERE id = ?', role);
     }
 
     removeEmployee(employee) {
-        return this.data.query('DELETE FROM employee WHERE ?', employee);
+        return this.data.query('DELETE FROM employee WHERE id = ?', employee);
     }
 
     //need to update employee role
-    updateRole() {
+    newEmployeeRole() {
         return this.data.query()
     }
 };

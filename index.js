@@ -1,7 +1,19 @@
 // root index 
 const { prompt } = require('inquirer');
-// const mysql = require('mysql2');
 const db = require('./db');
+const logo = require('asciiart-logo');
+
+// const gradient = require('gradient-string');
+
+
+function init() {
+    const text = logo({name: "Office Database"}).render();
+    console.log(text);
+    employeeQuestions();
+    // console.log(gradient('cyan', 'pink')('Hello world!'));
+};
+
+init();
 
 // WHEN I choose to view all departments
 // WHEN I choose to view all roles
@@ -83,16 +95,25 @@ async function employeeQuestions() {
             return viewRoles();
         case 'View Employees':
             return viewEmployees();
+        case 'Add Department':
+            return inputDepartment();
+        case 'Add Role':
+            return inputRole();
+        case 'Add Employee':  
+            return inputEmployee();
+        case 'Update Employee Role':
+            return updateEmployeeRole();
+        default:
+            return quit();
     };
 };
 
 
-
 async function viewDepartments() {
-    const department = await db.getDepartment();
+    const departments = await db.getDepartment();
 
     console.log("\n");
-    console.table(department);
+    console.table(departments);
     employeeQuestions();
 };
 
@@ -112,4 +133,37 @@ async function viewEmployees() {
     employeeQuestions();
 };
 
-employeeQuestions();
+async function inputDepartment() {
+    const department = await prompt([
+        {
+            name: "name",
+            message: "What's the name of the department you'd like to add?"
+        }
+    ]);
+    await db.addDepartment(department)
+    employeeQuestions();
+};
+
+async function inputRole() {
+
+};
+
+async function inputEmployee() {
+    const employee = await prompt([
+        {
+            name: "first_name",
+            mes
+        }
+    ])
+};
+
+async function updateEmployeeRole() {
+    await db.newEmployeeRole()
+}
+
+function quit(){
+    console.log("Goodbye!");
+    process.exit();
+}
+
+// employeeQuestions();
