@@ -2,7 +2,7 @@ USE office;
 
 SELECT * FROM department;
 SELECT * FROM role;
-select * FROM employee;
+SELECT * FROM employee;
 
 INSERT INTO department (name)
 VALUES
@@ -24,4 +24,4 @@ VALUES
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES
-('John', 'Damaso', 1)
+('John', 'Damaso', 1, 1)

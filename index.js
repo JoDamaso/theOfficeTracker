@@ -1,19 +1,16 @@
 // root index 
+const db = require('./db/index');
 const { prompt } = require('inquirer');
-const db = require('./db');
 const logo = require('asciiart-logo');
+const gradient = require('gradient-string');
 
-// const gradient = require('gradient-string');
-
-
-function init() {
-    const text = logo({name: "Office Database"}).render();
+async function init() {
+    const text = logo({ name: "Office Database" }).render();
     console.log(text);
-    employeeQuestions();
-    // console.log(gradient('cyan', 'pink')('Hello world!'));
+    return employeeQuestions();
 };
 
-init();
+init().then(console.log).catch(console.error);
 
 // WHEN I choose to view all departments
 // WHEN I choose to view all roles
@@ -83,7 +80,7 @@ async function employeeQuestions() {
                 {
                     name: "Exit OfficeTracker Database?",
                     value: 'exit'
-                }
+                },
             ]
         }
     ]);
@@ -103,6 +100,12 @@ async function employeeQuestions() {
             return inputEmployee();
         case 'Update Employee Role':
             return updateEmployeeRole();
+        case 'Remove a Department':
+            return deleteDepartment();
+        case 'Remove a Role':
+            return deleteRole();
+        case 'Remove a Employee':
+            return deleteEmployee();
         default:
             return quit();
     };
@@ -152,18 +155,17 @@ async function inputEmployee() {
     const employee = await prompt([
         {
             name: "first_name",
-            mes
+            message: ""
         }
     ])
+
 };
 
-async function updateEmployeeRole() {
-    await db.newEmployeeRole()
-}
+// async function updateEmployeeRole() {
+//     await db.newEmployeeRole()
+// }
 
-function quit(){
-    console.log("Goodbye!");
+function quit() {
+    console.log(gradient('cyan', 'pink')('Goodbye!'));
     process.exit();
-}
-
-// employeeQuestions();
+};

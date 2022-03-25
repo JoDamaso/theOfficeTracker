@@ -49,8 +49,8 @@ class Database {
     }
 
     //need to update employee role
-    newEmployeeRole() {
-        return this.data.query()
+    newEmployeeRole(emId, roleId) {
+        return this.data.query('UPDATE employee SET role_id = ? WHERE id = ?', [emId, roleId])
     }
 };
 
