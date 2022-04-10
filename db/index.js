@@ -31,8 +31,8 @@ class Database {
         return this.data.query('INSERT INTO department SET ?', department);
     }
     
-    addRole(role) {
-        return this.data.query('INSERT INTO role SET ?', role);
+    addRole(rolei) {
+        return this.data.query('INSERT INTO role SET ?', rolei);
     }
 
     addEmployee(employee) {

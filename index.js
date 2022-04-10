@@ -42,11 +42,11 @@ async function employeeQuestions() {
                     name: 'View all Employees',
                     value: 'View Employees'
                 },
-                {
-                    type: 'input',
-                    name: 'View all Managers',
-                    value: 'View Managers'
-                },
+                // {
+                //     type: 'input',
+                //     name: 'View all Managers',
+                //     value: 'View Managers'
+                // },
                 {
                     type: 'input',
                     name: 'Add a Department',
@@ -97,8 +97,8 @@ async function employeeQuestions() {
             return viewRoles();
         case 'View Employees':
             return viewEmployees();
-        case 'View Managers':
-            return viewManagers();
+        // case 'View Managers':
+        //     return viewManagers();
         case 'Add Department':
             return inputDepartment();
         case 'Add Role':
@@ -142,13 +142,13 @@ async function viewEmployees() {
     employeeQuestions();
 };
 
-async function viewManagers() {
-    const managers = await db.getManagers();
+// async function viewManagers() {
+//     const managers = await db.getManagers();
 
-    console.log("\n");
-    console.table(managers);
-    employeeQuestions();
-}
+//     console.log("\n");
+//     console.table(managers);
+//     employeeQuestions();
+// };
 
 async function inputDepartment() {
     const department = await prompt([
@@ -162,7 +162,32 @@ async function inputDepartment() {
 };
 
 async function inputRole() {
+    const currentDepartments = await db.getDepartment();
+    
+    // map to get a list of all updated roles if any was inputted
+    const departmentList = currentDepartments.map(({ id, name }) => ({
+        name: name, 
+        value: id
+    }));
 
+    const role = await prompt([
+        {
+            name: "title",
+            message: "What's the role you'd like to add?"
+        },
+        {
+            name: "salary",
+            message: "What's the salary of this role?"
+        },
+        {
+            type: 'list',
+            name: "department_id",
+            message: 'Which department are they in?',
+            choices: departmentList
+        }  
+    ]);
+    await db.addRole(role)
+    employeeQuestions();
 };
 
 async function inputEmployee() {
@@ -174,8 +199,10 @@ async function inputEmployee() {
         {
             name: "last_name",
             message: "What is the last name of the employee you'd like to add?"
-        }
-    ])
+        }, 
+    ]);
+    await db.addEmployee(employee)
+    employeeQuestions();
 };
 
 // async function updateEmployeeRole() {
