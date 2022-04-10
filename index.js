@@ -12,11 +12,11 @@ async function init() {
 
 init().then(console.log).catch(console.error);
 
-// WHEN I choose to view all departments DONE
-// WHEN I choose to view all roles DONE 
-// WHEN I choose to view all employees DONE
-// WHEN I choose to add a department DONE
-// WHEN I choose to add a role
+// WHEN I choose to view all departments 
+// WHEN I choose to view all roles 
+// WHEN I choose to view all employees 
+// WHEN I choose to add a department 
+// WHEN I choose to add a role 
 // WHEN I choose to add an employee
 // WHEN I choose to update an employee role
 

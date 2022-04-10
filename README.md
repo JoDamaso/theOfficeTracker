@@ -30,8 +30,9 @@ From the command line you'll be able to access the OfficeTracker Database and ad
   - Aside from being homework from my Bootcamp, it's soley meant to be benchmark to where I am at in this current moment of coding!
 
   # Preview
+  ![Preview](https://media.discordapp.net/attachments/763615031438606337/962856814813270026/unknown.png) <br>
   Link to demonstration
-![Preview] ()
+[Office Tracker](https://drive.google.com/file/d/1U9AdwzaNms21-DyRhHNxJRA9IeMSuisI/view)
 
   ## License 
 This project is under the license of **ISC**.
