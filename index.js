@@ -143,11 +143,7 @@ async function viewEmployees() {
 };
 
 // async function viewManagers() {
-//     const managers = await db.getManagers();
 
-//     console.log("\n");
-//     console.table(managers);
-//     employeeQuestions();
 // };
 
 async function inputDepartment() {
