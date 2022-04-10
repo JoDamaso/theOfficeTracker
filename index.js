@@ -12,10 +12,10 @@ async function init() {
 
 init().then(console.log).catch(console.error);
 
-// WHEN I choose to view all departments
-// WHEN I choose to view all roles
-// WHEN I choose to view all employees
-// WHEN I choose to add a department
+// WHEN I choose to view all departments DONE
+// WHEN I choose to view all roles DONE 
+// WHEN I choose to view all employees DONE
+// WHEN I choose to add a department DONE
 // WHEN I choose to add a role
 // WHEN I choose to add an employee
 // WHEN I choose to update an employee role
@@ -44,6 +44,11 @@ async function employeeQuestions() {
                 },
                 {
                     type: 'input',
+                    name: 'View all Managers',
+                    value: 'View Managers'
+                },
+                {
+                    type: 'input',
                     name: 'Add a Department',
                     value: 'Add Department'
                 },
@@ -57,26 +62,26 @@ async function employeeQuestions() {
                     name: 'Add a Employee',
                     value: 'Add Employee'
                 },
-                {
-                    type: 'input',
-                    name: 'Update Employee Role',
-                    value: 'Update Employee Role'
-                },
-                {
-                    type: 'input',
-                    name: 'Remove a Department',
-                    value: 'Remove a Department'
-                },
-                {
-                    type: 'input',
-                    name: 'Remove a Role',
-                    value: 'Remove a Role'
-                },
-                {
-                    type: 'input',
-                    name: 'Remove a Employee',
-                    value: 'Remove a Employee'
-                },
+                // {
+                //     type: 'input',
+                //     name: 'Update Employee Role',
+                //     value: 'Update Employee Role'
+                // },
+                // {
+                //     type: 'input',
+                //     name: 'Remove a Department',
+                //     value: 'Remove a Department'
+                // },
+                // {
+                //     type: 'input',
+                //     name: 'Remove a Role',
+                //     value: 'Remove a Role'
+                // },
+                // {
+                //     type: 'input',
+                //     name: 'Remove a Employee',
+                //     value: 'Remove a Employee'
+                // },
                 {
                     name: "Exit OfficeTracker Database?",
                     value: 'exit'
@@ -92,25 +97,26 @@ async function employeeQuestions() {
             return viewRoles();
         case 'View Employees':
             return viewEmployees();
+        case 'View Managers':
+            return viewManagers();
         case 'Add Department':
             return inputDepartment();
         case 'Add Role':
             return inputRole();
         case 'Add Employee':  
             return inputEmployee();
-        case 'Update Employee Role':
-            return updateEmployeeRole();
-        case 'Remove a Department':
-            return deleteDepartment();
-        case 'Remove a Role':
-            return deleteRole();
-        case 'Remove a Employee':
-            return deleteEmployee();
+        // case 'Update Employee Role':
+        //     return updateEmployeeRole();
+        // case 'Remove a Department':
+        //     return deleteDepartment();
+        // case 'Remove a Role':
+        //     return deleteRole();
+        // case 'Remove a Employee':
+        //     return deleteEmployee();
         default:
             return quit();
     };
 };
-
 
 async function viewDepartments() {
     const departments = await db.getDepartment();
@@ -136,6 +142,14 @@ async function viewEmployees() {
     employeeQuestions();
 };
 
+async function viewManagers() {
+    const managers = await db.getManagers();
+
+    console.log("\n");
+    console.table(managers);
+    employeeQuestions();
+}
+
 async function inputDepartment() {
     const department = await prompt([
         {
@@ -155,10 +169,13 @@ async function inputEmployee() {
     const employee = await prompt([
         {
             name: "first_name",
-            message: ""
+            message: "What is the first name of the employee you'd like to add?"
+        },
+        {
+            name: "last_name",
+            message: "What is the last name of the employee you'd like to add?"
         }
     ])
-
 };
 
 // async function updateEmployeeRole() {

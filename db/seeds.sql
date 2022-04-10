@@ -1,9 +1,5 @@
 USE office;
 
-SELECT * FROM department;
-SELECT * FROM role;
-SELECT * FROM employee;
-
 INSERT INTO department (name)
 VALUES
 ('Sales'),
@@ -24,4 +20,15 @@ VALUES
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES
-('John', 'Damaso', 1, 1)
+('John', 'Damaso', 1, 1),
+('Alwyn', 'Titcombe', 2, 1),
+('Woodie', 'Ferris', 3, 1),
+('Andree', 'Shapcott', 4, 3),
+('Winifield', 'Dmych', 5, 1),
+('Nester', 'Rudinger', 6, 5),
+('Danya', 'Fahrenbacher', 7, 1),
+('Hadrian', 'Pettet', 8, 7);
+
+SELECT * FROM department;
+SELECT * FROM role;
+SELECT * FROM employee;

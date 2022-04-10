@@ -21,6 +21,10 @@ class Database {
         return this.data.query('SELECT * FROM employee');
     }
 
+    getManagers(manager) {
+        return this.data.query("SELECT id, first_name, last_name FROM employee WHERE id = ?", manager);
+    }
+
     // adding input into the TABLES
     // param will be inserted where '?' is
     addDepartment(department) {
